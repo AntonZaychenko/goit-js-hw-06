@@ -2,9 +2,9 @@ const input = document.querySelector('#validation-input');
 
 input.addEventListener('blur', newBlur);
 let inputLength = input.dataset.length;
-
-function newBlur(changeColor) {
-if(input.value.length >= inputLength) {
+console.log(inputLength)
+function newBlur() {
+if(input.value.length == inputLength) {
     
     input.classList.add('valid')
     input.classList.remove('invalid')

@@ -17,27 +17,18 @@ const images = [
 ];
 
  const galleryListEl = document.querySelector(".gallery");
- 
- const total = images.map(image => {
-  
-  const galleryItemEl = document.createElement("li");
-  galleryItemEl.classList.add("gallery-list__img");
-
-  const galleryImgEl = document.createElement("img");
-  galleryImgEl.src = image.url;
-  galleryImgEl.alt = image.alt;
- galleryImgEl.width = image.width
-
-  galleryItemEl.appendChild(galleryImgEl);
-
-  return galleryItemEl;
-
-});
-
-galleryListEl.append(...total);
+  const makeLIst = ({ url, alt, width}) => {
+    return `
+    <li>
+      <img src="${url}" alt="${alt}" width="${width}"/>
+    </li>
+    `;
+  }
+  galleryListEl.insertAdjacentHTML('beforeend', images.map(makeLIst).join(''));
 
 
-galleryListEl.style.cssText = `
+
+  galleryListEl.style.cssText = `
   
   display: flex;
   align-items: center;
@@ -46,4 +37,4 @@ galleryListEl.style.cssText = `
   margin: 0;
   padding: 0;
   `;
- 
+  
